@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio | Fratelli</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/app.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/cardapio.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav-wrapper">
+    <a href="index.html" aria-label="Fratelli">
+      <img src="assets/logo.png" class="logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    </a>
+
+    <nav class="desktop-menu">
+      <a href="index.html" class="">Home</a>
+<a href="cardapio.html" class="active">Cardápio</a>
+<a href="contato.html" class="">Contato</a>
+<a href="carrinho.html" class="nav-cart ">Carrinho</a>
+    </nav>
+
+    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+      ☰
+    </button>
+  </div>
+
+  <nav id="mobileMenu" class="mobile-menu">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+<a href="cardapio.html" onclick="closeMenu()">Cardápio</a>
+<a href="contato.html" onclick="closeMenu()">Contato</a>
+<a href="carrinho.html" onclick="closeMenu()">Carrinho</a>
+  </nav>
+</header>
+
+
+<main class="container page-spacing">
+  <p class="eyebrow">Escolha seu pedido</p>
+  <h1 class="page-title">Cardápio</h1>
+  <p id="aviso-cardapio" class="product-meta"></p>
+
+  <nav class="menu-sections" aria-label="Seções do cardápio">
+    <a href="#porcoes-section">Porções</a>
+    <a href="#lanches-section">Lanches</a>
+    <a href="#pizzas-salgadas-section">Pizzas salgadas</a>
+    <a href="#pizzas-doces-section">Pizzas doces</a>
+    <a href="#pasteis-section">Pastéis</a>
+  </nav>
+
+  <section id="porcoes-section" class="menu-section">
+    <h2 class="category-title">Porções</h2>
+    <div id="porcoes" class="products-grid"></div>
+  </section>
+
+  <section id="lanches-section" class="menu-section">
+    <h2 class="category-title">Lanches</h2>
+    <div id="lanches" class="products-grid"></div>
+  </section>
+
+  <section id="pizzas-section" class="menu-section">
+    <h2 class="category-title">Pizzas</h2>
+    <div id="pizzas-salgadas-section" class="pizza-group">
+      <h3 class="subcategory-title">Salgadas</h3>
+      <div id="pizzas-salgadas" class="products-grid"></div>
+    </div>
+
+    <div id="pizzas-doces-section" class="pizza-group">
+      <h3 class="subcategory-title">Doces</h3>
+      <div id="pizzas-doces" class="products-grid"></div>
+    </div>
+  </section>
+
+  <section id="pasteis-section" class="menu-section">
+    <h2 class="category-title">Monte seu Pastel</h2>
+
+    <div class="glass-card pastel-box reveal">
+      <div class="pastel-head">
+        <div>
+          <h3>Escolha até 4 sabores</h3>
+          <p class="pastel-text">Monte do seu jeito e adicione ao carrinho.</p>
+        </div>
+
+        <strong class="pastel-price">R$ 10,00</strong>
+      </div>
+
+      <p id="pastel-contador" class="pastel-counter">0 de 4 sabores selecionados</p>
+
+      <div id="sabores" class="sabores-grid"></div>
+
+      <button class="btn-green big-btn" onclick="adicionarPastel()">
+        Adicionar Pastel
+      </button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <img src="assets/logo.png" class="footer-logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    <p>© 2026 Fratelli.</p>
+  </div>
+</footer>
+</body>
+</html>

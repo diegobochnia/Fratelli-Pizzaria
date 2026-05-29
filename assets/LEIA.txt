@@ -1,0 +1,2 @@
+Coloque sua logo aqui com o nome logo.png
+Exemplo: assets/logo.png

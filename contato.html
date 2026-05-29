@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Fratelli</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav-wrapper">
+    <a href="index.html" aria-label="Fratelli">
+      <img src="assets/logo.png" class="logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    </a>
+
+    <nav class="desktop-menu">
+      <a href="index.html" class="">Home</a>
+<a href="cardapio.html" class="">Cardápio</a>
+<a href="contato.html" class="active">Contato</a>
+<a href="carrinho.html" class="nav-cart ">Carrinho</a>
+    </nav>
+
+    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+      ☰
+    </button>
+  </div>
+
+  <nav id="mobileMenu" class="mobile-menu">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+<a href="cardapio.html" onclick="closeMenu()">Cardápio</a>
+<a href="contato.html" onclick="closeMenu()">Contato</a>
+<a href="carrinho.html" onclick="closeMenu()">Carrinho</a>
+  </nav>
+</header>
+
+
+<main class="container page-spacing">
+  <p class="eyebrow">Fale com a gente</p>
+  <h1 class="page-title">Contato</h1>
+
+  <div class="contact-grid">
+    <div class="info-card reveal">
+      <h2>Telefone</h2>
+      <p>(00) 00000-0000</p>
+    </div>
+
+    <div class="info-card reveal">
+      <h2>Localização</h2>
+      <p>Rua Exemplo, Centro</p>
+    </div>
+
+    <div class="info-card reveal">
+      <h2>WhatsApp</h2>
+      <p>Troque o número depois no link abaixo.</p>
+      <div class="actions-row">
+        <a href="https://wa.me/5500000000000" class="btn-green">Abrir WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-box reveal">
+    Coloque aqui o iframe do Google Maps ou um link para a localização.
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <img src="assets/logo.png" class="footer-logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    <p>© 2026 Fratelli.</p>
+  </div>
+</footer>
+</body>
+</html>

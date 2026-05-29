@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho | Fratelli</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/app.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/checkout.js"></script>
+  <script defer src="js/whatsapp.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav-wrapper">
+    <a href="index.html" aria-label="Fratelli">
+      <img src="assets/logo.png" class="logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    </a>
+
+    <nav class="desktop-menu">
+      <a href="index.html" class="">Home</a>
+<a href="cardapio.html" class="">Cardápio</a>
+<a href="contato.html" class="">Contato</a>
+<a href="carrinho.html" class="nav-cart active">Carrinho</a>
+    </nav>
+
+    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+      ☰
+    </button>
+  </div>
+
+  <nav id="mobileMenu" class="mobile-menu">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+<a href="cardapio.html" onclick="closeMenu()">Cardápio</a>
+<a href="contato.html" onclick="closeMenu()">Contato</a>
+<a href="carrinho.html" onclick="closeMenu()">Carrinho</a>
+  </nav>
+</header>
+
+
+<main class="container page-spacing">
+  <p class="eyebrow">Finalize pelo WhatsApp</p>
+  <h1 class="page-title">Carrinho</h1>
+
+  <div class="cart-layout">
+    <section id="cart-items"></section>
+
+    <aside class="glass-card checkout-box">
+      <h2>Finalizar Pedido</h2>
+
+      <input id="nome" class="input" placeholder="Seu nome">
+
+      <select id="tipo" class="input">
+        <option value="Entrega">Entrega</option>
+        <option value="Retirada">Retirada</option>
+      </select>
+
+      <div id="campos-entrega">
+        <input id="endereco" class="input" placeholder="Seu endereço">
+
+        <select id="perimetro" class="input">
+          <option value="Perímetro urbano - entrega grátis">Perímetro urbano — grátis</option>
+          <option value="Fora do perímetro - taxa a combinar">Fora do perímetro — taxa: R$ 8,00</option>
+        </select>
+      </div>
+
+      <div class="total-box">
+        <span>Total</span>
+        <strong id="total">R$ 0,00</strong>
+      </div>
+
+      <button class="btn-green checkout-btn" onclick="enviarWhatsApp()">
+        Enviar Pedido no WhatsApp
+      </button>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <img src="assets/logo.png" class="footer-logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+    <p>Pagamento combinado pelo WhatsApp.</p>
+  </div>
+</footer>
+</body>
+</html>
