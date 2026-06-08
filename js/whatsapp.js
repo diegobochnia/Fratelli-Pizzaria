@@ -1,5 +1,5 @@
 function enviarWhatsApp() {
-  const telefoneWhatsApp = "5542999520203";
+  const telefoneWhatsApp = "5541995051301";
 
   const nome = document.getElementById("nome").value.trim();
   const tipo = document.getElementById("tipo").value;
