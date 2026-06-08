@@ -4,6 +4,10 @@ function pegarCarrinho() {
 
 function salvarCarrinho(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  if (typeof updateCartBadge === "function") {
+    updateCartBadge();
+  }
 }
 
 function formatarPreco(valor) {
@@ -74,6 +78,10 @@ function limparCarrinho() {
 
   localStorage.removeItem("cart");
 
+  if (typeof updateCartBadge === "function") {
+    updateCartBadge();
+  }
+
   renderizarCarrinho();
 
 }
@@ -117,6 +125,10 @@ function renderizarCarrinho() {
     `;
 
     if (totalEl) totalEl.innerText = "R$ 0,00";
+
+    if (typeof updateCartBadge === "function") {
+      updateCartBadge();
+    }
 
     return;
 
@@ -194,6 +206,10 @@ function renderizarCarrinho() {
 
   if (totalEl) {
     totalEl.innerText = formatarPreco(total);
+  }
+
+  if (typeof updateCartBadge === "function") {
+    updateCartBadge();
   }
 
 }

@@ -61,7 +61,36 @@ function showToast(message) {
   }, 1800);
 }
 
+function getCartQuantity() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    return cart.reduce((total, item) => {
+      return total + Number(item.quantidade || 0);
+    }, 0);
+  } catch (error) {
+    return 0;
+  }
+}
+
+function updateCartBadge() {
+  const badges = document.querySelectorAll("[data-cart-count]");
+  const quantity = getCartQuantity();
+
+  badges.forEach(badge => {
+    badge.textContent = quantity > 99 ? "99+" : String(quantity);
+    badge.classList.toggle("show", quantity > 0);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupActiveLinks();
   setupRevealAnimations();
+  updateCartBadge();
+});
+
+window.addEventListener("storage", event => {
+  if (event.key === "cart") {
+    updateCartBadge();
+  }
 });

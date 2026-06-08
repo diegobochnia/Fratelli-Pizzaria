@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cardápio | Fratelli</title>
+  <title>Cardápio Virtual | Fratelli</title>
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/app.js"></script>
   <script defer src="js/cart.js"></script>
@@ -24,9 +24,20 @@
 <a href="carrinho.html" class="nav-cart ">Carrinho</a>
     </nav>
 
-    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
-      ☰
-    </button>
+    <div class="mobile-actions">
+      <a href="carrinho.html" class="mobile-cart-link" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.2 6h15l-1.5 8.4a2 2 0 0 1-2 1.6H9.1a2 2 0 0 1-2-1.7L5.8 4H3" />
+          <circle cx="9.5" cy="20" r="1.4" />
+          <circle cx="17.5" cy="20" r="1.4" />
+        </svg>
+        <span class="cart-badge" data-cart-count>0</span>
+      </a>
+
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+        ☰
+      </button>
+    </div>
   </div>
 
   <nav id="mobileMenu" class="mobile-menu">
@@ -39,9 +50,28 @@
 
 
 <main class="container page-spacing">
-  <p class="eyebrow">Escolha seu pedido</p>
-  <h1 class="page-title">Cardápio</h1>
-  <p id="aviso-cardapio" class="product-meta"></p>
+  <section class="menu-intro">
+    <div>
+      <p class="eyebrow">Escolha seu pedido</p>
+      <h1 class="page-title">Cardápio virtual</h1>
+      <p class="menu-intro-text">Adicione os itens ao carrinho e finalize o pedido pelo WhatsApp.</p>
+      <p id="aviso-cardapio" class="product-meta">Entrega grátis no perímetro urbano. Fora do perímetro, taxa de R$ 8,00.</p>
+    </div>
+
+    <a href="carrinho.html" class="btn-green menu-cart-cta">
+      Ver carrinho
+      <span class="cart-badge inline-badge" data-cart-count>0</span>
+    </a>
+  </section>
+
+  <div class="menu-toolbar">
+    <input
+      id="busca-cardapio"
+      class="menu-search input"
+      type="search"
+      placeholder="Buscar pizza, lanche, porção..."
+      aria-label="Buscar item no cardápio">
+  </div>
 
   <nav class="menu-sections" aria-label="Seções do cardápio">
     <a href="#porcoes-section">Porções</a>
@@ -49,6 +79,7 @@
     <a href="#pizzas-salgadas-section">Pizzas salgadas</a>
     <a href="#pizzas-doces-section">Pizzas doces</a>
     <a href="#pasteis-section">Pastéis</a>
+    <a href="#bebidas-section">Bebidas</a>
   </nav>
 
   <section id="porcoes-section" class="menu-section">
@@ -84,8 +115,10 @@
           <p class="pastel-text">Monte do seu jeito e adicione ao carrinho.</p>
         </div>
 
-        <strong class="pastel-price">R$ 10,00</strong>
+        <strong id="pastel-preco" class="pastel-price">R$ 15,90</strong>
       </div>
+
+      <select id="pastel-opcao" class="input" aria-label="Escolha o tipo do pastel"></select>
 
       <p id="pastel-contador" class="pastel-counter">0 de 4 sabores selecionados</p>
 
@@ -96,6 +129,16 @@
       </button>
     </div>
   </section>
+
+  <section id="bebidas-section" class="menu-section">
+    <h2 class="category-title">Bebidas</h2>
+    <div id="bebidas" class="products-grid"></div>
+  </section>
+
+  <a href="carrinho.html" class="floating-cart" aria-label="Abrir carrinho">
+    Carrinho
+    <span class="cart-badge inline-badge" data-cart-count>0</span>
+  </a>
 </main>
 
 <footer>

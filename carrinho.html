@@ -25,9 +25,20 @@
 <a href="carrinho.html" class="nav-cart active">Carrinho</a>
     </nav>
 
-    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
-      ☰
-    </button>
+    <div class="mobile-actions">
+      <a href="carrinho.html" class="mobile-cart-link active" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.2 6h15l-1.5 8.4a2 2 0 0 1-2 1.6H9.1a2 2 0 0 1-2-1.7L5.8 4H3" />
+          <circle cx="9.5" cy="20" r="1.4" />
+          <circle cx="17.5" cy="20" r="1.4" />
+        </svg>
+        <span class="cart-badge" data-cart-count>0</span>
+      </a>
+
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+        ☰
+      </button>
+    </div>
   </div>
 
   <nav id="mobileMenu" class="mobile-menu">

@@ -22,9 +22,20 @@
 <a href="carrinho.html" class="nav-cart ">Carrinho</a>
     </nav>
 
-    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
-      ☰
-    </button>
+    <div class="mobile-actions">
+      <a href="carrinho.html" class="mobile-cart-link" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.2 6h15l-1.5 8.4a2 2 0 0 1-2 1.6H9.1a2 2 0 0 1-2-1.7L5.8 4H3" />
+          <circle cx="9.5" cy="20" r="1.4" />
+          <circle cx="17.5" cy="20" r="1.4" />
+        </svg>
+        <span class="cart-badge" data-cart-count>0</span>
+      </a>
+
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+        ☰
+      </button>
+    </div>
   </div>
 
   <nav id="mobileMenu" class="mobile-menu">
@@ -43,25 +54,21 @@
   <div class="contact-grid">
     <div class="info-card reveal">
       <h2>Telefone</h2>
-      <p>(00) 00000-0000</p>
+      <p>(42) 99952-0203</p>
     </div>
 
     <div class="info-card reveal">
       <h2>Localização</h2>
-      <p>Rua Exemplo, Centro</p>
+      <p>Avenida João Ferreira Neves, Centro, 2844</p>
     </div>
 
     <div class="info-card reveal">
       <h2>WhatsApp</h2>
-      <p>Troque o número depois no link abaixo.</p>
+      <p>(42) 99952-0203</p>
       <div class="actions-row">
-        <a href="https://wa.me/5500000000000" class="btn-green">Abrir WhatsApp</a>
+        <a href="https://wa.me/5542999520203" class="btn-green">Abrir WhatsApp</a>
       </div>
     </div>
-  </div>
-
-  <div class="map-box reveal">
-    Coloque aqui o iframe do Google Maps ou um link para a localização.
   </div>
 </main>
 
