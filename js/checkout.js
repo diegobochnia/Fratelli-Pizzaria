@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function atualizarCampos() {
     camposEntrega.style.display = tipo.value === "Entrega" ? "block" : "none";
+
+    if (typeof renderizarCarrinho === "function") {
+      renderizarCarrinho();
+    }
   }
 
   tipo.addEventListener("change", atualizarCampos);
