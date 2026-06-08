@@ -24,16 +24,33 @@ function enviarWhatsApp() {
   }
 
   let pedidos = "";
-  let total = 0;
+  let subtotalPedido = 0;
 
   cart.forEach((item, index) => {
-    total += Number(item.preco || 0);
-    pedidos += `${index + 1}. ${item.nome} - ${formatarPreco(item.preco)}\n`;
+    const quantidade = Number(item.quantidade || 1);
+    const preco = Number(item.preco || 0);
+    const subtotal = preco * quantidade;
+
+    subtotalPedido += subtotal;
+    pedidos += `${index + 1}. ${quantidade}x ${item.nome} - ${formatarPreco(subtotal)}`;
+
+    if (quantidade > 1) {
+      pedidos += ` (${formatarPreco(preco)} cada)`;
+    }
+
+    pedidos += "\n";
   });
+
+  const frete = tipo === "Entrega" && perimetro.includes("Fora") ? 8 : 0;
+  const total = subtotalPedido + frete;
 
   const textoEntrega = tipo === "Entrega"
     ? `Endereço: ${endereco}\nÁrea: ${perimetro}\n`
     : "Retirada no local\n";
+
+  const textoFrete = frete > 0
+    ? `FRETE: ${formatarPreco(frete)}\n`
+    : "";
 
   const mensagem =
 `🍕 NOVO PEDIDO
@@ -43,7 +60,8 @@ Tipo: ${tipo}
 ${textoEntrega}
 PEDIDO:
 ${pedidos}
-TOTAL: ${formatarPreco(total)}
+SUBTOTAL: ${formatarPreco(subtotalPedido)}
+${textoFrete}TOTAL: ${formatarPreco(total)}
 
 Pagamento a combinar pelo WhatsApp.`;
 

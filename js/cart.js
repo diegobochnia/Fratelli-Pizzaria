@@ -184,11 +184,12 @@ function renderizarCarrinho() {
 
   let frete = 0;
 
+  const tipo = document.getElementById("tipo");
   const perimetro = document.getElementById("perimetro");
 
   if (perimetro) {
 
-    if (perimetro.value.includes("Fora")) {
+    if ((!tipo || tipo.value === "Entrega") && perimetro.value.includes("Fora")) {
       frete = 8;
     }
 

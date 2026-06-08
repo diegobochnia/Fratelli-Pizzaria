@@ -646,6 +646,22 @@ img {
   line-height: 1.15;
 }
 
+.special-flavor-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-left: 8px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(230, 42, 42, 0.14);
+  color: #ffb3b3;
+  border: 1px solid rgba(230, 42, 42, 0.35);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  vertical-align: middle;
+}
+
 .product-content p,
 .product-meta {
   color: #777;
@@ -740,6 +756,40 @@ img {
 
 .size-btn.active small {
   color: var(--green-light);
+}
+
+.pizza-flavors {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.pizza-flavors label {
+  display: grid;
+  gap: 6px;
+}
+
+.pizza-third-flavor[hidden] {
+  display: none;
+}
+
+.pizza-flavors span {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.pizza-flavor-select {
+  margin: 0;
+  padding: 12px;
+}
+
+.pizza-flavor-note {
+  min-height: 18px;
+  margin: 0;
+  color: #858585;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 /* PASTEL */
@@ -1367,6 +1417,12 @@ footer {
   .product-content h3 {
     font-size: 17px;
     line-height: 1.18;
+  }
+
+  .special-flavor-tag {
+    margin: 6px 0 0;
+    padding: 4px 7px;
+    font-size: 10px;
   }
 
   .product-content p,

@@ -7,11 +7,14 @@ const OPCOES_PIZZA = [
 ];
 
 const OPCOES_PASTEL = [
-  { nome: "Tradicional", preco: 15.9 },
-  { nome: "Especial", preco: 19.9 }
+  { nome: "Pastel", preco: 10 }
 ];
 
 const MAX_SABORES_PASTEL = 4;
+
+const SABOR_STROGONOFF = "strogonoff";
+const ADICIONAL_STROGONOFF_MEIA = 5;
+const ADICIONAL_STROGONOFF_INTEIRA = 10;
 
 function criarSlug(texto) {
   return texto
@@ -141,6 +144,12 @@ const cardapio = {
       nome: "Frango com Catupiry",
       tipo: "Salgada",
       descricao: "Molho de tomate, mussarela, frango, catupiry e orégano."
+    },
+    {
+      nome: "Strogonoff",
+      tipo: "Salgada",
+      descricao: "Molho de tomate, mussarela, strogonoff cremoso, batata palha e oregano.",
+      especial: true
     },
     {
       nome: "Portuguesa",
@@ -276,7 +285,7 @@ const cardapio = {
 document.addEventListener("DOMContentLoaded", () => {
   iniciarCardapio(cardapio);
   configurarBuscaCardapio();
-  configurarOpcoesPastel();
+  atualizarPrecoPastel();
 });
 
 function iniciarCardapio(data) {
@@ -337,6 +346,30 @@ function normalizarTipoPizza(tipo) {
   return String(tipo || "Salgada").trim().toLowerCase();
 }
 
+function ehSaborStrogonoff(sabor) {
+  return normalizarBusca(sabor).includes(SABOR_STROGONOFF);
+}
+
+function ehPizzaGrande(tamanho) {
+  return String(tamanho || "").includes("12");
+}
+
+function obterLimiteSaboresPizza(tamanho, sabores = []) {
+  if (!ehPizzaGrande(tamanho)) return 2;
+
+  return sabores.some(ehSaborStrogonoff) ? 2 : 3;
+}
+
+function calcularAdicionalStrogonoff(sabores = []) {
+  if (!sabores.some(ehSaborStrogonoff)) return 0;
+
+  return sabores.length === 1 ? ADICIONAL_STROGONOFF_INTEIRA : ADICIONAL_STROGONOFF_MEIA;
+}
+
+function calcularPrecoPizza(precoBase, sabores = []) {
+  return Number(precoBase || 0) + calcularAdicionalStrogonoff(sabores);
+}
+
 function obterImagemPizza(pizza) {
   return pizza.imagem || `assets/imagens/pizza-${criarSlug(pizza.nome)}.png`;
 }
@@ -349,6 +382,7 @@ function renderizarListaPizzas(pizzas, id) {
   container.innerHTML = "";
 
   pizzas.forEach(pizza => {
+    const opcoesSabores = obterOpcoesSaboresPizza(pizza.nome);
     const categoriaPizza = normalizarTipoPizza(pizza.tipo) === "doce" ? "Pizzas Doces" : "Pizzas Salgadas";
     const botoesTamanho = OPCOES_PIZZA.map((opcao, index) => `
       <button
@@ -371,11 +405,34 @@ function renderizarListaPizzas(pizzas, id) {
         </div>
 
         <div class="product-content">
-          <h3>${pizza.nome}</h3>
+          <h3>
+            ${pizza.nome}
+            ${pizza.especial ? `<span class="special-flavor-tag">Sabor especial</span>` : ""}
+          </h3>
           <p>${pizza.descricao || ""}</p>
 
           <div class="pizza-sizes" role="group" aria-label="Escolha o tamanho da pizza">
             ${botoesTamanho}
+          </div>
+
+          <div class="pizza-flavors" data-pizza-flavors>
+            <label>
+              <span>2&ordm; sabor (opcional)</span>
+              <select class="option-select pizza-flavor-select" data-sabor-extra="2" onchange="atualizarSaboresPizza(${pizza.index})">
+                <option value="">Sem 2&ordm; sabor</option>
+                ${opcoesSabores}
+              </select>
+            </label>
+
+            <label class="pizza-third-flavor" data-terceiro-sabor hidden>
+              <span>3&ordm; sabor (opcional)</span>
+              <select class="option-select pizza-flavor-select" data-sabor-extra="3" onchange="atualizarSaboresPizza(${pizza.index})">
+                <option value="">Sem 3&ordm; sabor</option>
+                ${opcoesSabores}
+              </select>
+            </label>
+
+            <p class="pizza-flavor-note" id="pizza-sabores-info-${pizza.index}"></p>
           </div>
 
           <div class="product-bottom">
@@ -389,12 +446,12 @@ function renderizarListaPizzas(pizzas, id) {
       </article>
     `;
   });
+
+  pizzas.forEach(pizza => atualizarSaboresPizza(pizza.index));
 }
 
 function selecionarTamanhoPizza(index, botaoSelecionado) {
   const botoes = document.querySelectorAll(`[data-pizza-index="${index}"] .size-btn`);
-  const preco = Number(botaoSelecionado.dataset.preco);
-  const precoEl = document.getElementById(`pizza-preco-${index}`);
 
   botoes.forEach(botao => {
     const selecionado = botao === botaoSelecionado;
@@ -402,22 +459,106 @@ function selecionarTamanhoPizza(index, botaoSelecionado) {
     botao.setAttribute("aria-pressed", String(selecionado));
   });
 
-  if (precoEl) {
-    precoEl.textContent = formatarPreco(preco);
-  }
+  atualizarSaboresPizza(index);
 }
 
 function adicionarPizza(index) {
   const pizza = dadosCardapio.pizzas[index];
   const tamanhoSelecionado = document.querySelector(`[data-pizza-index="${index}"] .size-btn.active`);
+  const sabores = obterSaboresPizzaSelecionados(index);
+  const limite = obterLimiteSaboresPizza(tamanhoSelecionado.dataset.tamanho, sabores);
+  const saboresUnicos = new Set(sabores.map(normalizarBusca));
+
+  if (saboresUnicos.size !== sabores.length) {
+    alert("Escolha sabores diferentes para a mesma pizza.");
+    return;
+  }
+
+  if (sabores.length > limite) {
+    alert(`Este tamanho permite no maximo ${limite} sabores.`);
+    return;
+  }
 
   const produto = {
-    nome: `Pizza ${pizza.nome} (${tamanhoSelecionado.dataset.tamanho})`,
-    descricao: pizza.descricao || "",
-    preco: Number(tamanhoSelecionado.dataset.preco)
+    nome: `Pizza ${tamanhoSelecionado.dataset.tamanho} (${sabores.join(" / ")})`,
+    descricao: montarDescricaoPizza(pizza, sabores),
+    preco: calcularPrecoPizza(tamanhoSelecionado.dataset.preco, sabores)
   };
 
   adicionarCarrinho(produto);
+}
+
+function obterOpcoesSaboresPizza(saborAtual = "") {
+  if (!dadosCardapio || !dadosCardapio.pizzas) return "";
+
+  return dadosCardapio.pizzas
+    .filter(pizza => normalizarBusca(pizza.nome) !== normalizarBusca(saborAtual))
+    .map(pizza => `
+      <option value="${pizza.nome}">${pizza.nome}</option>
+    `).join("");
+}
+
+function obterSaboresPizzaSelecionados(index) {
+  const pizza = dadosCardapio.pizzas[index];
+  const selects = document.querySelectorAll(`[data-pizza-index="${index}"] .pizza-flavor-select`);
+  const sabores = [pizza.nome];
+
+  selects.forEach(select => {
+    if (select.value) sabores.push(select.value);
+  });
+
+  return sabores;
+}
+
+function montarDescricaoPizza(pizza, sabores = []) {
+  const adicional = calcularAdicionalStrogonoff(sabores);
+
+  if (adicional > 0) {
+    return `Adicional de Strogonoff: ${formatarPreco(adicional)}`;
+  }
+
+  return sabores.length > 1 ? "Pizza montada com mais de um sabor" : pizza.descricao || "";
+}
+
+function atualizarSaboresPizza(index) {
+  const card = document.querySelector(`[data-pizza-index="${index}"]`);
+  const tamanhoSelecionado = card ? card.querySelector(".size-btn.active") : null;
+  const terceiroSabor = card ? card.querySelector("[data-terceiro-sabor]") : null;
+  const terceiroSelect = terceiroSabor ? terceiroSabor.querySelector("select") : null;
+  const info = document.getElementById(`pizza-sabores-info-${index}`);
+  const precoEl = document.getElementById(`pizza-preco-${index}`);
+
+  if (!card || !tamanhoSelecionado) return;
+
+  let sabores = obterSaboresPizzaSelecionados(index);
+  let limite = obterLimiteSaboresPizza(tamanhoSelecionado.dataset.tamanho, sabores);
+  let permiteTerceiro = limite >= 3;
+
+  if (terceiroSabor) {
+    terceiroSabor.hidden = !permiteTerceiro;
+  }
+
+  if (!permiteTerceiro && terceiroSelect) {
+    terceiroSelect.value = "";
+    sabores = obterSaboresPizzaSelecionados(index);
+    limite = obterLimiteSaboresPizza(tamanhoSelecionado.dataset.tamanho, sabores);
+    permiteTerceiro = limite >= 3;
+  }
+
+  if (precoEl) {
+    precoEl.textContent = formatarPreco(calcularPrecoPizza(tamanhoSelecionado.dataset.preco, sabores));
+  }
+
+  if (info) {
+    const adicional = calcularAdicionalStrogonoff(sabores);
+    const textoLimite = permiteTerceiro
+      ? "Este tamanho permite ate 3 sabores."
+      : "Este tamanho permite ate 2 sabores.";
+
+    info.textContent = adicional > 0
+      ? `${textoLimite} Adicional Strogonoff: ${formatarPreco(adicional)}.`
+      : textoLimite;
+  }
 }
 
 function renderizarSaboresPastel(sabores) {
@@ -439,29 +580,8 @@ function renderizarSaboresPastel(sabores) {
   container.addEventListener("change", limitarSaboresPastel);
 }
 
-function configurarOpcoesPastel() {
-  const select = document.getElementById("pastel-opcao");
-
-  if (!select) return;
-
-  select.innerHTML = OPCOES_PASTEL.map(opcao => `
-    <option value="${opcao.nome}" data-preco="${opcao.preco}">
-      ${opcao.nome} - ${formatarPreco(opcao.preco)}
-    </option>
-  `).join("");
-
-  select.addEventListener("change", atualizarPrecoPastel);
-  atualizarPrecoPastel();
-}
-
 function obterOpcaoPastelSelecionada() {
-  const select = document.getElementById("pastel-opcao");
-  const option = select ? select.options[select.selectedIndex] : null;
-
-  return {
-    nome: option ? option.value : OPCOES_PASTEL[0].nome,
-    preco: option ? Number(option.dataset.preco) : OPCOES_PASTEL[0].preco
-  };
+  return OPCOES_PASTEL[0];
 }
 
 function atualizarPrecoPastel() {
@@ -541,7 +661,7 @@ function adicionarPastel() {
   const sabores = Array.from(checks).map(item => item.value);
 
   adicionarCarrinho({
-    nome: `Pastel ${opcao.nome} (${sabores.join(", ")})`,
+    nome: `${opcao.nome} (${sabores.join(", ")})`,
     descricao: "Pastel montado pelo cliente",
     preco: opcao.preco
   });
