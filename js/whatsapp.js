@@ -43,6 +43,7 @@ function enviarWhatsApp() {
 
   const frete = tipo === "Entrega" && perimetro.includes("Fora") ? 8 : 0;
   const total = subtotalPedido + frete;
+  const temBebida = cart.some(item => item.tipo === "bebida" || item.categoria);
 
   const textoEntrega = tipo === "Entrega"
     ? `Endereço: ${endereco}\nÁrea: ${perimetro}\n`
@@ -50,6 +51,10 @@ function enviarWhatsApp() {
 
   const textoFrete = frete > 0
     ? `FRETE: ${formatarPreco(frete)}\n`
+    : "";
+
+  const textoBebidas = temBebida
+    ? "OBSERVAÇÃO: verificar disponibilidade das bebidas escolhidas no estoque.\n"
     : "";
 
   const mensagem =
@@ -60,10 +65,12 @@ Tipo: ${tipo}
 ${textoEntrega}
 PEDIDO:
 ${pedidos}
+${textoBebidas}
 SUBTOTAL: ${formatarPreco(subtotalPedido)}
 ${textoFrete}TOTAL: ${formatarPreco(total)}
 
-Pagamento a combinar pelo WhatsApp.`;
+Pagamento a combinar pelo WhatsApp.
+Chave pix: xxxxxxx`;
 
   const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");

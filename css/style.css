@@ -823,6 +823,12 @@ img {
   scrollbar-width: none;
 }
 
+.beverage-stock-note {
+  max-width: 680px;
+  margin: -12px 0 18px;
+  color: #d8d8d8;
+}
+
 .drink-sections::-webkit-scrollbar {
   display: none;
 }
@@ -1115,6 +1121,7 @@ footer {
   opacity: 0;
   transition: 0.25s;
   z-index: 9999;
+  pointer-events: none;
 }
 
 .toast.show {

@@ -372,23 +372,27 @@ function renderizarBebidas(bebidas) {
 
   Object.entries(grupos).forEach(([categoria, itens]) => {
     const grupoId = criarSlug(`bebidas-${categoria}`);
-    const cards = itens.map(bebida => `
-      <article class="drink-card" data-search="${obterTextoBusca(bebida.nome, bebida.descricao, bebida.categoria)}">
-        <div class="drink-info">
-          <h3>${bebida.nome}</h3>
-          <p>${bebida.descricao || ""}</p>
-        </div>
+    const cards = itens.map(bebida => {
+      const bebidaCarrinho = { ...bebida, tipo: "bebida" };
 
-        <div class="drink-actions">
-          <span class="price">${formatarPreco(bebida.preco)}</span>
-          <button
-            class="add-btn"
-            onclick='adicionarCarrinho(${JSON.stringify(bebida)})'>
-            +
-          </button>
-        </div>
-      </article>
-    `).join("");
+      return `
+        <article class="drink-card" data-search="${obterTextoBusca(bebida.nome, bebida.descricao, bebida.categoria)}">
+          <div class="drink-info">
+            <h3>${bebida.nome}</h3>
+            <p>${bebida.descricao || ""}</p>
+          </div>
+
+          <div class="drink-actions">
+            <span class="price">${formatarPreco(bebida.preco)}</span>
+            <button
+              class="add-btn"
+              onclick='adicionarCarrinho(${JSON.stringify(bebidaCarrinho)})'>
+              +
+            </button>
+          </div>
+        </article>
+      `;
+    }).join("");
 
     container.innerHTML += `
       <div id="${grupoId}" class="bebida-group">

@@ -27,6 +27,10 @@ function adicionarCarrinho(produto) {
 
   if (existente) {
     existente.quantidade += 1;
+
+    if (produto.tipo && !existente.tipo) {
+      existente.tipo = produto.tipo;
+    }
   }
 
   else {
