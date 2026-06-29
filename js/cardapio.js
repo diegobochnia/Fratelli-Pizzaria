@@ -31,43 +31,37 @@ const cardapio = {
       nome: "Batata Frita",
       descricao: "Porção crocante de batata frita, ideal para acompanhar lanches e pizzas.",
       preco: 22,
-      imagem: "assets/imagens/batata-frita.png"
+      imagem: "assets/imagens/batata-frita.webp"
     },
     {
       nome: "Batata com Bacon",
       descricao: "Batata frita com bacon em pedaços, servida bem quente.",
       preco: 30,
-      imagem: "assets/imagens/batata-com-bacon.png"
+      imagem: "assets/imagens/batata-com-bacon.webp"
     },
     {
       nome: "Frango à Passarinho",
       descricao: "Frango temperado e frito, uma porção clássica para compartilhar.",
       preco: 30,
-      imagem: "assets/imagens/frango-passarinho.png"
+      imagem: "assets/imagens/frango-passarinho.webp"
     },
     {
       nome: "Peixe Frito",
       descricao: "Peixe frito sequinho, preparado para servir como porção.",
       preco: 38,
-      imagem: "assets/imagens/peixe-frito.png"
+      imagem: "assets/imagens/peixe-frito.webp"
     },
     {
       nome: "Polenta com Calabresa ou Bacon",
       descricao: "Polenta frita com opção de calabresa ou bacon.",
       preco: 35,
-      imagem: "assets/imagens/polenta-calabresa-bacon.png"
+      imagem: "assets/imagens/polenta-calabresa-bacon.webp"
     },
     {
       nome: "Mandioca Frita com Calabresa ou Bacon",
       descricao: "Mandioca frita com opção de calabresa ou bacon.",
       preco: 30,
-      imagem: "assets/imagens/mandioca-calabresa-bacon.png"
-    },
-    {
-      nome: "Salgados Fritos",
-      descricao: "Mix de salgados fritos para dividir ou pedir como entrada.",
-      preco: 30,
-      imagem: "assets/imagens/salgados-fritos.png"
+      imagem: "assets/imagens/mandioca-calabresa-bacon.webp"
     }
   ],
   lanches: [
@@ -75,43 +69,43 @@ const cardapio = {
       nome: "X-Burger",
       descricao: "Pão, maionese, hambúrguer, presunto, queijo, milho e ervilha.",
       preco: 15,
-      imagem: "assets/imagens/x-burger.png"
+      imagem: "assets/imagens/x-burger.webp"
     },
     {
       nome: "X-Salada",
       descricao: "Pão, maionese, hambúrguer, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 18,
-      imagem: "assets/imagens/x-salada.png"
+      imagem: "assets/imagens/x-salada.webp"
     },
     {
       nome: "X-Bacon",
       descricao: "Pão, maionese, hambúrguer, bacon, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 20,
-      imagem: "assets/imagens/x-bacon.png"
+      imagem: "assets/imagens/x-bacon.webp"
     },
     {
       nome: "X-Egg",
       descricao: "Pão, maionese, hambúrguer, ovo, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 20,
-      imagem: "assets/imagens/x-egg.png"
+      imagem: "assets/imagens/x-egg.webp"
     },
     {
       nome: "X-Tudo",
       descricao: "Pão, maionese, hambúrguer, ovo, bacon, calabresa, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 25,
-      imagem: "assets/imagens/x-tudo.png"
+      imagem: "assets/imagens/x-tudo.webp"
     },
     {
       nome: "X-Calabresa",
       descricao: "Pão, maionese, hambúrguer, calabresa, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 20,
-      imagem: "assets/imagens/x-calabresa.png"
+      imagem: "assets/imagens/x-calabresa.webp"
     },
     {
       nome: "X-Frango",
       descricao: "Pão, maionese, hambúrguer, frango, presunto, queijo, milho, ervilha, alface, tomate e batata palha.",
       preco: 20,
-      imagem: "assets/imagens/x-frango.png"
+      imagem: "assets/imagens/x-frango.webp"
     }
   ],
   pizzas: [
@@ -269,22 +263,44 @@ const cardapio = {
     "Chocolate"
   ],
   bebidas: [
-    {
-      nome: "Coca-Cola 2L",
-      descricao: "Refrigerante Coca-Cola 2 litros.",
-      preco: 12
-    },
-    {
-      nome: "Guaraná 2L",
-      descricao: "Refrigerante Guaraná 2 litros.",
-      preco: 11
-    }
+    { nome: "Coca-Cola lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Guaraná Antarctica lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Coca-Cola Zero lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Pepsi lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Fanta lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Sprite lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Pepsi Twist lata", descricao: "Refrigerante lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Água tônica lata", descricao: "Bebida lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Del Valle lata", descricao: "Suco lata.", categoria: "Refrigerantes lata", preco: 6 },
+    { nome: "Monster lata", descricao: "Energético lata.", categoria: "Energéticos", preco: 12 },
+    { nome: "Red Bull lata", descricao: "Energético lata.", categoria: "Energéticos", preco: 12 },
+    { nome: "Coca-Cola mini", descricao: "Refrigerante mini.", categoria: "Refrigerantes mini", preco: 3 },
+    { nome: "Coca-Cola 600 ml", descricao: "Refrigerante 600 ml.", categoria: "Refrigerantes 600 ml", preco: 8 },
+    { nome: "Sprite 600 ml", descricao: "Refrigerante 600 ml.", categoria: "Refrigerantes 600 ml", preco: 8 },
+    { nome: "Fanta 600 ml", descricao: "Refrigerante 600 ml.", categoria: "Refrigerantes 600 ml", preco: 8 },
+    { nome: "Coca-Cola 1 litro", descricao: "Refrigerante 1 litro.", categoria: "Refrigerantes 1L e 2L", preco: 10 },
+    { nome: "Coca-Cola Zero 1 litro", descricao: "Refrigerante 1 litro.", categoria: "Refrigerantes 1L e 2L", preco: 10 },
+    { nome: "Coca-Cola 2 litros", descricao: "Refrigerante 2 litros.", categoria: "Refrigerantes 1L e 2L", preco: 15 },
+    { nome: "Coca-Cola Zero 2 litros", descricao: "Refrigerante 2 litros.", categoria: "Refrigerantes 1L e 2L", preco: 15 },
+    { nome: "Fanta 2 litros", descricao: "Refrigerante 2 litros.", categoria: "Refrigerantes 1L e 2L", preco: 13 },
+    { nome: "Sprite 2 litros", descricao: "Refrigerante 2 litros.", categoria: "Refrigerantes 1L e 2L", preco: 13 },
+    { nome: "Água com gás", descricao: "Garrafa de água com gás.", categoria: "Águas", preco: 4 },
+    { nome: "Água sem gás", descricao: "Garrafa de água sem gás.", categoria: "Águas", preco: 4 },
+    { nome: "Vinho 1 litro", descricao: "Garrafa de vinho 1 litro.", categoria: "Vinhos e destilados", preco: 25 },
+    { nome: "Vinho 2 litros", descricao: "Garrafa de vinho 2 litros.", categoria: "Vinhos e destilados", preco: 30 },
+    { nome: "Vodka", descricao: "Garrafa de vodka.", categoria: "Vinhos e destilados", preco: 30 },
+    { nome: "Skol lata", descricao: "Cerveja lata.", categoria: "Cervejas", preco: 5 },
+    { nome: "Brahma lata", descricao: "Cerveja lata.", categoria: "Cervejas", preco: 5 },
+    { nome: "Ice garrafinha", descricao: "Bebida Ice garrafinha.", categoria: "Ice e long neck", preco: 8 },
+    { nome: "Sol long neck", descricao: "Cerveja long neck.", categoria: "Ice e long neck", preco: 8 },
+    { nome: "Heineken long neck", descricao: "Cerveja long neck.", categoria: "Ice e long neck", preco: 8 }
   ]
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   iniciarCardapio(cardapio);
   configurarBuscaCardapio();
+  configurarMenuCategoriasFixo();
   atualizarPrecoPastel();
 });
 
@@ -295,7 +311,7 @@ function iniciarCardapio(data) {
   renderizarProdutos(data.lanches || [], "lanches", "Lanches");
   renderizarPizzas(data.pizzas || []);
   renderizarSaboresPastel(data.pasteis || []);
-  renderizarProdutos(data.bebidas || [], "bebidas", "Bebidas");
+  renderizarBebidas(data.bebidas || []);
   filtrarCardapio();
 }
 
@@ -329,6 +345,58 @@ function renderizarProdutos(produtos, id, categoria) {
           </div>
         </div>
       </article>
+    `;
+  });
+}
+
+function renderizarBebidas(bebidas) {
+  const container = document.getElementById("bebidas");
+  const navegacao = document.getElementById("bebidas-nav");
+
+  if (!container) return;
+
+  const grupos = bebidas.reduce((acc, bebida) => {
+    const categoria = bebida.categoria || "Outras bebidas";
+    acc[categoria] = acc[categoria] || [];
+    acc[categoria].push(bebida);
+    return acc;
+  }, {});
+
+  container.innerHTML = "";
+
+  if (navegacao) {
+    navegacao.innerHTML = Object.keys(grupos).map(categoria => `
+      <a href="#${criarSlug(`bebidas-${categoria}`)}">${categoria}</a>
+    `).join("");
+  }
+
+  Object.entries(grupos).forEach(([categoria, itens]) => {
+    const grupoId = criarSlug(`bebidas-${categoria}`);
+    const cards = itens.map(bebida => `
+      <article class="drink-card" data-search="${obterTextoBusca(bebida.nome, bebida.descricao, bebida.categoria)}">
+        <div class="drink-info">
+          <h3>${bebida.nome}</h3>
+          <p>${bebida.descricao || ""}</p>
+        </div>
+
+        <div class="drink-actions">
+          <span class="price">${formatarPreco(bebida.preco)}</span>
+          <button
+            class="add-btn"
+            onclick='adicionarCarrinho(${JSON.stringify(bebida)})'>
+            +
+          </button>
+        </div>
+      </article>
+    `).join("");
+
+    container.innerHTML += `
+      <div id="${grupoId}" class="bebida-group">
+        <h3 class="subcategory-title">${categoria}</h3>
+        <div class="drink-list">
+          ${cards}
+        </div>
+      </div>
     `;
   });
 }
@@ -371,7 +439,7 @@ function calcularPrecoPizza(precoBase, sabores = []) {
 }
 
 function obterImagemPizza(pizza) {
-  return pizza.imagem || `assets/imagens/pizza-${criarSlug(pizza.nome)}.png`;
+  return pizza.imagem || `assets/imagens/pizza-${criarSlug(pizza.nome)}.webp`;
 }
 
 function renderizarListaPizzas(pizzas, id) {
@@ -601,6 +669,35 @@ function configurarBuscaCardapio() {
   busca.addEventListener("input", filtrarCardapio);
 }
 
+function configurarMenuCategoriasFixo() {
+  const menu = document.querySelector(".menu-sections");
+  const header = document.querySelector(".header");
+
+  if (!menu || !header) return;
+
+  const marcador = document.createElement("div");
+  marcador.className = "menu-sections-marker";
+  menu.parentNode.insertBefore(marcador, menu);
+
+  function obterAlturaHeader() {
+    return Math.round(header.getBoundingClientRect().height);
+  }
+
+  function atualizarMenuFixo() {
+    const topoFixo = obterAlturaHeader();
+    const marcadorTopo = marcador.getBoundingClientRect().top;
+    const deveFixar = marcadorTopo <= topoFixo;
+
+    document.documentElement.style.setProperty("--menu-fixed-top", `${topoFixo}px`);
+    marcador.style.height = deveFixar ? `${menu.offsetHeight}px` : "0px";
+    menu.classList.toggle("is-fixed", deveFixar);
+  }
+
+  atualizarMenuFixo();
+  window.addEventListener("scroll", atualizarMenuFixo, { passive: true });
+  window.addEventListener("resize", atualizarMenuFixo);
+}
+
 function obterTextoBusca(...partes) {
   return normalizarBusca(partes.filter(Boolean).join(" "));
 }
@@ -615,15 +712,15 @@ function normalizarBusca(texto) {
 function filtrarCardapio() {
   const busca = document.getElementById("busca-cardapio");
   const termo = normalizarBusca(busca ? busca.value : "");
-  const grupos = document.querySelectorAll(".menu-section, .pizza-group");
+  const grupos = document.querySelectorAll(".menu-section, .pizza-group, .bebida-group");
 
-  document.querySelectorAll(".product-card, .sabor-item").forEach(item => {
+  document.querySelectorAll(".product-card, .sabor-item, .drink-card").forEach(item => {
     const texto = item.dataset.search || normalizarBusca(item.textContent);
     item.classList.toggle("is-hidden", termo && !texto.includes(termo));
   });
 
   grupos.forEach(grupo => {
-    const itens = grupo.querySelectorAll(".product-card, .sabor-item");
+    const itens = grupo.querySelectorAll(".product-card, .sabor-item, .drink-card");
     const algumVisivel = Array.from(itens).some(item => !item.classList.contains("is-hidden"));
     grupo.classList.toggle("is-hidden", termo && itens.length > 0 && !algumVisivel);
   });

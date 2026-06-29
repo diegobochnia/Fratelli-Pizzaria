@@ -1,157 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cardápio Virtual | Fratelli</title>
-  <meta name="description" content="Cardápio virtual Fratelli: escolha pizzas, pastéis, lanches e porções, monte seu pedido e finalize pelo WhatsApp.">
+  <meta name="description"
+    content="Cardápio virtual Fratelli: escolha pizzas, pastéis, lanches e porções, monte seu pedido e finalize pelo WhatsApp.">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/app.js"></script>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="container nav-wrapper">
-    <a href="index.html" aria-label="Fratelli">
-      <img src="assets/logo.png" class="logo" alt="Logo Fratelli" onerror="this.style.display='none'">
-    </a>
-
-    <nav class="desktop-menu">
-      <a href="index.html" class="active">Home</a>
-<a href="cardapio.html" class="">Cardápio</a>
-<a href="contato.html" class="">Contato</a>
-<a href="carrinho.html" class="nav-cart ">Carrinho</a>
-    </nav>
-
-    <div class="mobile-actions">
-      <a href="carrinho.html" class="mobile-cart-link" aria-label="Abrir carrinho">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.2 6h15l-1.5 8.4a2 2 0 0 1-2 1.6H9.1a2 2 0 0 1-2-1.7L5.8 4H3" />
-          <circle cx="9.5" cy="20" r="1.4" />
-          <circle cx="17.5" cy="20" r="1.4" />
-        </svg>
-        <span class="cart-badge" data-cart-count>0</span>
+  <header class="header">
+    <div class="container nav-wrapper">
+      <a href="index.html" aria-label="Fratelli">
+        <img src="assets/logo.png" class="logo" alt="Logo Fratelli" onerror="this.style.display='none'">
       </a>
 
-      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
-        ☰
-      </button>
-    </div>
-  </div>
+      <nav class="desktop-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="cardapio.html" class="">Cardápio</a>
+        <a href="contato.html" class="">Contato</a>
+        <a href="carrinho.html" class="nav-cart ">Carrinho</a>
+      </nav>
 
-  <nav id="mobileMenu" class="mobile-menu">
-    <a href="index.html" onclick="closeMenu()">Home</a>
-<a href="cardapio.html" onclick="closeMenu()">Cardápio</a>
-<a href="contato.html" onclick="closeMenu()">Contato</a>
-<a href="carrinho.html" onclick="closeMenu()">Carrinho</a>
-  </nav>
-</header>
+      <div class="mobile-actions">
+        <a href="carrinho.html" class="mobile-cart-link" aria-label="Abrir carrinho">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.2 6h15l-1.5 8.4a2 2 0 0 1-2 1.6H9.1a2 2 0 0 1-2-1.7L5.8 4H3" />
+            <circle cx="9.5" cy="20" r="1.4" />
+            <circle cx="17.5" cy="20" r="1.4" />
+          </svg>
+          <span class="cart-badge" data-cart-count>0</span>
+        </a>
 
-
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <div class="italy-bar">
-          <span class="green"></span>
-          <span class="white"></span>
-          <span class="red"></span>
-        </div>
-
-        <p class="eyebrow">Cardápio virtual Fratelli</p>
-
-        <h1>Escolha seu pedido pelo cardápio virtual.</h1>
-
-        <p>
-          Veja pizzas, pastéis, lanches e porções, adicione ao carrinho e finalize tudo pelo WhatsApp.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="cardapio.html" class="btn-white">Abrir cardápio</a>
-          <a href="carrinho.html" class="btn-green">Ver carrinho</a>
-        </div>
-
-        <div class="hero-category-strip" aria-label="Atalhos do cardápio">
-          <a href="cardapio.html#pizzas-section">Pizzas</a>
-          <a href="cardapio.html#lanches-section">Lanches</a>
-          <a href="cardapio.html#porcoes-section">Porções</a>
-          <a href="cardapio.html#pasteis-section">Pastéis</a>
-        </div>
-      </div>
-
-      <div class="hero-image reveal">
-        <div class="hero-placeholder">
-          <img
-            src="assets/imagens/vitrine-fratelli.png"
-            alt="Pizza, lanche, porção e pastel da Fratelli"
-            onerror="this.remove()">
-          <span>Pedido online Fratelli</span>
-        </div>
+        <button class="mobile-btn" onclick="toggleMenu()" aria-label="Abrir menu">
+          ☰
+        </button>
       </div>
     </div>
-  </section>
 
-  <section class="info-section">
-    <div class="container info-grid">
-      <div class="info-card reveal">
-        <h3>1. Escolha no cardápio</h3>
-        <p>Navegue por categorias, veja os valores e monte seu pedido do jeito que preferir.</p>
-      </div>
+    <nav id="mobileMenu" class="mobile-menu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="cardapio.html" onclick="closeMenu()">Cardápio</a>
+      <a href="contato.html" onclick="closeMenu()">Contato</a>
+      <a href="carrinho.html" onclick="closeMenu()">Carrinho</a>
+    </nav>
+  </header>
 
-      <div class="info-card reveal">
-        <h3>2. Adicione ao carrinho</h3>
-        <p>Separe pizzas, lanches, porções e pastéis antes de finalizar.</p>
-      </div>
 
-      <div class="info-card reveal">
-        <h3>3. Envie pelo WhatsApp</h3>
-        <p>O pedido sai pronto para confirmar entrega, retirada e pagamento.</p>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="italy-bar">
+            <span class="green"></span>
+            <span class="white"></span>
+            <span class="red"></span>
+          </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Comece por aqui</p>
-          <h2>Categorias do cardápio</h2>
+          <p class="eyebrow">Cardápio virtual Fratelli</p>
+
+          <h1>Escolha seu pedido pelo cardápio virtual.</h1>
+
+          <p>
+            Veja pizzas, pastéis, lanches e porções, adicione ao carrinho e finalize tudo pelo WhatsApp.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="cardapio.html" class="btn-white">Abrir cardápio</a>
+            <a href="carrinho.html" class="btn-green">Ver carrinho</a>
+          </div>
+
+          <div class="hero-category-strip" aria-label="Atalhos do cardápio">
+            <a href="cardapio.html#pizzas-section">Pizzas</a>
+            <a href="cardapio.html#lanches-section">Lanches</a>
+            <a href="cardapio.html#porcoes-section">Porções</a>
+            <a href="cardapio.html#pasteis-section">Pastéis</a>
+            <a href="cardapio.html#bebidas-section">Bebidas</a>
+          </div>
         </div>
-        <p>Atalhos rápidos para a pessoa chegar direto no que quer pedir.</p>
-      </div>
 
-      <div class="menu-highlight-grid reveal">
-        <a href="cardapio.html#pizzas-section" class="menu-highlight-card">
-          <span>Pizzas</span>
-          <strong>Salgadas e doces</strong>
-        </a>
-        <a href="cardapio.html#lanches-section" class="menu-highlight-card">
-          <span>Lanches</span>
-          <strong>Clássicos da casa</strong>
-        </a>
-        <a href="cardapio.html#porcoes-section" class="menu-highlight-card">
-          <span>Porções</span>
-          <strong>Para compartilhar</strong>
-        </a>
-        <a href="cardapio.html#pasteis-section" class="menu-highlight-card">
-          <span>Pastéis</span>
-          <strong>Monte até 4 sabores</strong>
-        </a>
+        <div class="hero-image reveal">
+          <div class="hero-placeholder">
+            <img src="assets/imagens/vitrine-fratelli.png" alt="Pizza, lanche, porção e pastel da Fratelli"
+              onerror="this.remove()">
+            <span>Pedido online Fratelli</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="actions-row">
-        <a href="cardapio.html" class="btn-green">Escolher produtos</a>
-        <a href="carrinho.html" class="btn-ghost">Finalizar pedido</a>
+    <section class="info-section">
+      <div class="container info-grid">
+        <div class="info-card reveal">
+          <h3>1. Escolha no cardápio</h3>
+          <p>Navegue por categorias, veja os valores e monte seu pedido do jeito que preferir.</p>
+        </div>
+
+        <div class="info-card reveal">
+          <h3>2. Adicione ao carrinho</h3>
+          <p>Separe pizzas, lanches, porções e pastéis antes de finalizar.</p>
+        </div>
+
+        <div class="info-card reveal">
+          <h3>3. Envie pelo WhatsApp</h3>
+          <p>O pedido sai pronto para confirmar entrega, retirada e pagamento.</p>
+        </div>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Comece por aqui</p>
+            <h2>Categorias do cardápio</h2>
+          </div>
+          <p>Atalhos rápidos para a pessoa chegar direto no que quer pedir.</p>
+        </div>
+
+        <div class="menu-highlight-grid reveal">
+          <a href="cardapio.html#pizzas-section" class="menu-highlight-card">
+            <span>Pizzas</span>
+            <strong>Salgadas e doces</strong>
+          </a>
+          <a href="cardapio.html#lanches-section" class="menu-highlight-card">
+            <span>Lanches</span>
+            <strong>Clássicos da casa</strong>
+          </a>
+          <a href="cardapio.html#porcoes-section" class="menu-highlight-card">
+            <span>Porções</span>
+            <strong>Para compartilhar</strong>
+          </a>
+          <a href="cardapio.html#pasteis-section" class="menu-highlight-card">
+            <span>Pastéis</span>
+            <strong>Monte até 4 sabores</strong>
+          </a>
+          <a href="cardapio.html#bebidas-section" class="menu-highlight-card">
+            <span>Bebidas</span>
+            <strong>Refrigerantes, águas e cervejas</strong>
+          </a>
+        </div>
+
+        <div class="actions-row">
+          <a href="cardapio.html" class="btn-green">Escolher produtos</a>
+          <a href="carrinho.html" class="btn-ghost">Finalizar pedido</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <img src="assets/logo.png" class="footer-logo" alt="Logo Fratelli" onerror="this.style.display='none'">
+      <p>© 2026 Fratelli. Todos os direitos reservados.</p>
     </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container footer-content">
-    <img src="assets/logo.png" class="footer-logo" alt="Logo Fratelli" onerror="this.style.display='none'">
-    <p>© 2026 Fratelli. Todos os direitos reservados.</p>
-  </div>
-</footer>
+  </footer>
 </body>
+
 </html>
