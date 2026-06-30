@@ -57,6 +57,8 @@ function enviarWhatsApp() {
     ? "OBSERVAÇÃO: verificar disponibilidade das bebidas escolhidas no estoque.\n"
     : "";
 
+  const chavePix = "15486388000150";
+
   const mensagem =
 `🍕 NOVO PEDIDO
 
@@ -69,8 +71,13 @@ ${textoBebidas}
 SUBTOTAL: ${formatarPreco(subtotalPedido)}
 ${textoFrete}TOTAL: ${formatarPreco(total)}
 
-Pagamento a combinar pelo WhatsApp.
-Chave pix: xxxxxxx`;
+PAGAMENTO VIA PIX:
+
+Chave Pix CNPJ: 
+${chavePix}
+
+Copie a chave acima, faça o pagamento e envie o comprovante por aqui.
+Caso prefira pagar de outra forma, informe no WhatsApp.`;
 
   const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");
